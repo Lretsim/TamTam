@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FEU Roosevelt - Where's Tamtam?</title>
+    <link rel="stylesheet" href="where's-tamtam.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Where's TamTam?</h1>
+        
+        <div class="start-screen" id="startScreen">
+            <p>Can you find the hidden TamTam in the picture?<br>Test your observation skills!</p>
+            
+            <div class="tamtam-preview"></div>
+            <p><strong>Find our FEU Roosevelt mascot!</strong></p>
+            
+            <button class="btn btn-start" id="startBtn">Start Game</button>
+            <button class="btn btn-how" id="howToBtn">How to Play?</button>
+            
+            <!-- High Scores Section -->
+            <div class="high-scores">
+                <h2>Top 10 High Scores</h2>
+                <div id="highScoresList"></div>
+            </div>
+        </div>
+        
+        <div class="game-screen" id="gameScreen">
+            <div class="game-info">
+                <div class="info-item">Time: <span id="timer">30</span>s</div>
+                <div class="info-item">Score: <span id="score">0</span></div>
+            </div>
+            
+            <div class="game-board" id="gameBoard"></div>
+            
+            <button class="btn btn-how" id="backToMenu">Back to Menu</button>
+        </div>
+    </div>
+    
+    <div class="modal" id="howToModal">
+        <div class="modal-content">
+            <h2>How to Play?</h2>
+            <p>Welcome to the <strong style="font-size: 22px; color: #006400;">"Where's TamTam?"</strong> game! Ready for some fun? Your mission is simple:</p>
+
+            <ul>
+                <li><strong style="font-size: 20px; color: #006400;">Find Tamtam!</strong> Click the image of Tamtam within <strong style="font-size: 20px; color: #006400;">30 seconds</strong> to score points.</li><br>
+                <li>Each time you find Tamtam, you'll earn:
+                    <ul>
+                        <li><strong style="color: #006400;">+5 points</strong> to your score.</li>
+                        <li><strong style="color: #006400;">+5 seconds</strong> to your remaining time.</li>
+                    </ul>
+                    An interesting <strong style="color: #006400;">Fun Fact</strong> will give you some information and then new random <strong style="color: #006400;">hideout</strong> for Tamtam will appear after you <strong style="color: #006400;">find</strong> TamTam. Keep an eye out for Tamtam's sneaky hiding spots!
+                </li><br>
+                <li>If you click wrong, <strong style="font-size: 18px; color: #8B0000;">2 seconds</strong> will be deducted from your timer. Be careful!</li>
+                <li>If time runs out before you find Tamtam, the game ends. But don't worry, you can always <strong style="color: #006400;">Start Game</strong> and try to beat your score!</li>
+            </ul>
+            
+            <p>Are you ready? The clock is ticking, and Tamtam is waiting for you! 🕒</p>                             
+            <button class="close-btn" id="closeHowTo">Got it!</button>
+        </div>
+    </div>
+    
+    <div class="modal" id="timeUpModal">
+        <div class="modal-content">
+            <h2>Time's Up!</h2>
+            <p>Your final score is: <span id="finalScore">0</span></p>
+            <div id="scoreSubmission" style="display: none; margin-top: 20px;">
+                <p>Congratulations! You made it to the top 10!</p>
+                <input type="text" id="playerName" placeholder="Enter your nickname" maxlength="15">
+                <button class="btn btn-ok" id="submitScore">Submit Score</button>
+            </div>
+            <button class="btn btn-ok" id="okBtn">OK</button>
+        </div>
+    </div>
+    
+    <div class="modal" id="factModal">
+        <div class="modal-content">
+            <h3>TamTam Fact!</h3>
+            <p class="fact-text" id="factText"></p>
+            <button class="btn btn-fact" id="closeFact">OK</button>
+        </div>
+    </div>
+    
+    <div class="message correct" id="correctMsg">Correct! +5 points, +5 seconds!</div>
+    <div class="message wrong" id="wrongMsg">Wrong! -2 seconds!</div>
+
+    <!-- Sound control button -->
+    <div class="sound-control" id="soundControl" style="display: none;">
+        <span id="soundIcon">🔊</span>
+    </div>
+
+    <!-- Audio elements -->
+    <audio id="bgMusic" loop>
+        <source src="tamtam-bg-music.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="correctSound">
+        <source src="tamtam-correct-sound.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="wrongSound">
+        <source src="tamtam-wrong-sound.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="where's-tamtam.js"></script>
+</body>
+</html>
